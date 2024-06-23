@@ -16,3 +16,7 @@ COPY . .
 
 # Set the default command to run when the container starts
 CMD ["python3", "-m", "Adarsh"]
+
+docker build -t my-python-app .
+docker run -it --rm my-python-app
+
