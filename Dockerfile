@@ -1,11 +1,13 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-alpine
+FROM python:3.9-slim
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Install system dependencies needed for Python encoding
-RUN apk add --no-cache libstdc++ libffi
+# Install system dependencies needed for Python encoding and other packages
+RUN apt-get update && \
+    apt-get install -y libstdc++ libffi libssl-dev && \
+    apt-get clean
 
 # Copy and install Python dependencies
 COPY requirements.txt ./
@@ -16,7 +18,3 @@ COPY . .
 
 # Set the default command to run when the container starts
 CMD ["python3", "-m", "Adarsh"]
-
-docker build -t my-python-app .
-docker run -it --rm my-python-app
-
