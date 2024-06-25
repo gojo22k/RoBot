@@ -1,6 +1,9 @@
 # Start from a base Python 3.9 Alpine image
 FROM python:3.9-alpine
 
+# Install and configure NTP
+
+
 # Install system dependencies
 RUN apk add --no-cache \
     gcc \
@@ -11,6 +14,7 @@ RUN apk add --no-cache \
     python3-dev \
     libc-dev \
     make \
+    ntp\
     libstdc++
 
 # Set working directory
