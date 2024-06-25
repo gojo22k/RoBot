@@ -13,7 +13,17 @@ from aiohttp import web
 from .server import web_server
 from .utils.keepalive import ping_server
 from Adarsh.bot.clients import initialize_clients
+from pyrogram import Client
 
+app = Client("my_bot")
+
+async def main():
+    async with app:
+        await app.start()
+
+        # Perform time synchronization
+        await app.sync_clock()
+        
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
