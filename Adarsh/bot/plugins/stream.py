@@ -102,7 +102,7 @@ async def private_receive_handler(c: Client, m: Message):
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
         file_size_mb = humanbytes(get_media_file_size(m))
 
-        msg_text = f"<b>📥 DOWNLOAD:</b> {online_link}"
+        msg_text = f"<b></b> {online_link}"
 
         await log_msg.reply_text(
             text=f"**Requested by:** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**User ID:** `{m.from_user.id}`\n**Stream Link:** {stream_link}",
