@@ -1,4 +1,3 @@
-<!--(c) adarsh-goel-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,36 +10,96 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css"/>
-
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Raleway', sans-serif;
+        }
+        .toogle {
+            cursor: pointer;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #222;
+        }
+        #file-name {
+            font-family: 'Delius', cursive;
+            color: #ff0000;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+        .player-container {
+            position: relative;
+        }
+        .player {
+            width: 100%;
+            height: 450px;
+            background: black;
+        }
+        .player-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: #fff;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+        }
+        #aniflix-logo {
+            width: 100px;
+            height: auto;
+        }
+        .video-title {
+            font-size: 1.2em;
+            color: #ff0000;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .dark {
+            background-color: #111;
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <div class="toogle"></div>
+        <img src="ANIFLIX.png" alt="Aniflix Logo" id="aniflix-logo">
+        <div class="toogle">Toggle Dark Mode</div>
         <div id="file-name">
-           <marquee direction = "left"> %s</marquee>
+           <marquee direction="left">%s</marquee>
         </div>
     </header>
 
     <div class="container">
-        <tag src="%s" class="player"></tag>
+        <div class="player-container">
+            <video src="%s" class="player"></video>
+        </div>
+        <div class="video-title">%s</div>
+        <button class="player-button">Download</button>
     </div>
     
     <footer>
-	<h4><a href="tg://resolve?domain=direct_link_generator_658_bot" style="color:blue" >Make your own Link &emsp; &emsp;</a></h4>
-        <span id="fork-text">Fork me on</span>
-        <span>
-            <a href="https://github.com/Greymattersbot/Filestreambot-pro" id='github-logo'>
-                <svg id='octo' style="width: 1.2rem; padding-left: 5px; fill: var(--footer-icon-color)" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-		
-        </span>
-	    
+        <!-- Footer content can be added here if needed -->
     </footer>
     
-    
     <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
-	<script>
+    <script>
         const controls = [
               'play-large',
               'rewind',
@@ -55,19 +114,32 @@
               'settings',
               'pip',
               'airplay',
-              'download',
               'fullscreen'
             ];
+
         document.addEventListener('DOMContentLoaded', () => {
             const player = Plyr.setup('.player', { controls });
+
+            const videoElement = document.querySelector('.player');
+            videoElement.addEventListener('dblclick', (event) => {
+                const { left, width } = videoElement.getBoundingClientRect();
+                const clickPosition = event.clientX - left;
+                const playerInstance = player[0];
+
+                if (clickPosition < width / 2) {
+                    playerInstance.rewind(10);
+                } else {
+                    playerInstance.forward(10);
+                }
+            });
         });
 
         const body = document.querySelector('body');
         const footer = document.querySelector('footer');
         const toogle = document.querySelector('.toogle');
         toogle.onclick = () => {
-            body.classList.toggle('dark')
-            footer.classList.toggle('dark')
+            body.classList.toggle('dark');
+            footer.classList.toggle('dark');
         }
     </script>
 </body>
