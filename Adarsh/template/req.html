@@ -5,142 +5,155 @@
     <meta property="og:image" content="https://i.ibb.co/M8S0Zzj/live-streaming.png" itemprop="thumbnailUrl">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>%s</title>
-    <link rel="stylesheet" type='text/css' href="https://adarsh-goel.github.io/resources/style.css">
+    <title>Aniflix</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css"/>
     <style>
         body {
-            background-color: #000;
-            color: #fff;
+            background-color: black;
+            color: white;
             font-family: 'Raleway', sans-serif;
-        }
-        .toogle {
-            cursor: pointer;
+            margin: 0;
+            padding: 0;
         }
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: black;
             padding: 10px;
-            background-color: #222;
+            text-align: center;
+            border-bottom: 2px solid red;
         }
-        #file-name {
-            font-family: 'Delius', cursive;
-            color: #ff0000;
+        header img {
+            height: 50px;
+        }
+        #file-name marquee {
+            color: red;
+            font-size: 1.2em;
         }
         .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 10px;
-            background-color: #333;
-            border-radius: 10px;
-        }
-        .player-container {
-            position: relative;
+            padding: 20px;
+            text-align: center;
         }
         .player {
-            width: 100%;
-            height: 450px;
-            background: black;
+            max-width: 100%;
+            border: 2px solid red;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
-        .player-button {
-            display: block;
-            margin: 10px auto;
+        .plyr--full-ui input[type=range] {
+            color: red;
+        }
+        .plyr__control {
+            color: red !important;
+        }
+        .plyr__control--overlaid {
+            background: none !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 64px; /* Adjust size as needed */
+            height: 64px; /* Adjust size as needed */
+        }
+        .plyr__control--overlaid svg {
+            width: 100%;
+            height: 100%;
+            fill: red; /* Change fill color to red */
+        }
+        #download-button, #join-telegram {
+            display: inline-block;
             padding: 10px 20px;
-            background-color: #ff0000;
-            color: #fff;
-            text-align: center;
+            background-color: red;
+            color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
+            text-decoration: none;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+        #download-button:hover, #join-telegram:hover {
+            background-color: darkred;
         }
         footer {
-            text-align: center;
+            background: black;
             padding: 20px;
-            background-color: #222;
-        }
-        #aniflix-logo {
-            width: 100px;
-            height: auto;
-        }
-        .video-title {
-            font-size: 1.2em;
-            color: #ff0000;
             text-align: center;
-            margin: 10px 0;
+            border-top: 2px solid red;
+            margin-top: 20px;
         }
-        .dark {
-            background-color: #111;
+        footer a {
+            color: red;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <img src="ANIFLIX.png" alt="Aniflix Logo" id="aniflix-logo">
-        <div class="toogle">Toggle Dark Mode</div>
+        <img src="https://i.ibb.co/M8S0Zzj/live-streaming.png" alt="Aniflix Logo">
         <div id="file-name">
-           <marquee direction="left">%s</marquee>
+            <marquee direction="left"> %s </marquee>
         </div>
     </header>
 
     <div class="container">
-        <div class="player-container">
-            <video src="%s" class="player"></video>
-        </div>
-        <div class="video-title">%s</div>
-        <button class="player-button">Download</button>
+        <video src="%s" class="player" controls></video>
+        <div class="title">Video Title Here</div>
+        <a id="download-button" href="%s" download>Download Video</a>
+        <a id="join-telegram" href="https://t.me/aniflixClou">Join Our Telegram Channel: Aniflix</a>
     </div>
     
     <footer>
-        <!-- Footer content can be added here if needed -->
+        <h4><a href="tg://resolve?domain=direct_link_generator_658_bot">Make your own Link</a></h4>
     </footer>
-    
+
     <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
     <script>
-        const controls = [
-              'play-large',
-              'rewind',
-              'play', 
-              'fast-forward', 
-              'progress', 
-              'current-time',
-              'duration',
-              'mute',
-              'volume',
-              'captions',
-              'settings',
-              'pip',
-              'airplay',
-              'fullscreen'
-            ];
-
         document.addEventListener('DOMContentLoaded', () => {
-            const player = Plyr.setup('.player', { controls });
-
-            const videoElement = document.querySelector('.player');
-            videoElement.addEventListener('dblclick', (event) => {
-                const { left, width } = videoElement.getBoundingClientRect();
-                const clickPosition = event.clientX - left;
-                const playerInstance = player[0];
-
-                if (clickPosition < width / 2) {
-                    playerInstance.rewind(10);
-                } else {
-                    playerInstance.forward(10);
-                }
+            const player = new Plyr('.player', { 
+                controls: [
+                    'play-large',
+                    'rewind',
+                    'play',
+                    'fast-forward',
+                    'progress',
+                    'current-time',
+                    'duration',
+                    'mute',
+                    'volume',
+                    'captions',
+                    'settings',
+                    'pip',
+                    'airplay',
+                    'download',
+                    'fullscreen'
+                ],
+                seekTime: 10,
+                tooltips: { controls: true },
             });
+
+            const playButton = document.querySelector('.plyr__control--overlaid');
+            playButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                    <polygon points="22,16 22,48 48,32" style="fill:red"/>
+                </svg>
+            `;
         });
 
-        const body = document.querySelector('body');
-        const footer = document.querySelector('footer');
-        const toogle = document.querySelector('.toogle');
-        toogle.onclick = () => {
-            body.classList.toggle('dark');
-            footer.classList.toggle('dark');
-        }
+        document.querySelector('.player').addEventListener('dblclick', (event) => {
+            const player = Plyr.setup('.player')[0];
+            const rect = event.target.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            if (x < rect.width / 2) {
+                player.rewind(10);
+            } else {
+                player.forward(10);
+            }
+        });
     </script>
 </body>
 </html>
