@@ -1,73 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta property="og:image" content="https://i.ibb.co/M8S0Zzj/live-streaming.png" itemprop="thumbnailUrl">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>%s</title>
-    <!-- Include CSS styles from the second code snippet -->
-    <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css">
-    <link rel="stylesheet" href="https://aeditx03.github.io/resources/StreamCSS.css">
-    <link rel="stylesheet" href="https://aeditx03.github.io/resources/playerCss.css">
-    <!-- Additional CSS styles you had in the first code snippet -->
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
+    <title>{}</title>
+    <link rel="stylesheet" type='text/css' href="https://aeditx03.github.io/resources/StreamCSS.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Add any additional styles here */
+    </style>
 </head>
+
 <body>
     <header>
         <div class="toogle"></div>
         <div id="file-name">
-           <marquee direction="left">%s</marquee>
+            <marquee direction="left">{}</marquee>
         </div>
     </header>
 
-    <div class="container">
-        <tag src="%s" class="player"></tag>
-    </div>
-    
-    <footer>
-        <h4><a href="tg://resolve?domain=direct_link_generator_658_bot" style="color:blue">Make your own Link &emsp; &emsp;</a></h4>
-        <span id="fork-text">Fork me on</span>
-        <span>
-            <a href="https://github.com/Greymattersbot/Filestreambot-pro" id='github-logo'>
-                <svg id='octo' style="width: 1.2rem; padding-left: 5px; fill: var(--footer-icon-color)" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+    <nav>
+        <div class="nleft">
+            <a href="https://telegram.me/Geeky_Network">
+                <h4 id="heading" style="z-index: 100;" class="magnet">ANIFLIX</h4>
             </a>
-        </span>
-    </footer>
-    
-    <!-- JavaScript for Plyr -->
-    <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
+        </div>
+        <div class="nryt">
+            <a class="home-btn magnet" href="#main" onclick="toggleWidthnav(this)">HOME</a>
+            <a href="#sec1" class="about-btn magnet" onclick="toggleWidthnav(this)">ABOUT</a>
+        </div>
+    </nav>
+
+    <center>
+        <div class="about-nav">
+            <a href="#sec1" class="wlcm magnet" onclick="toggleWidth(this)">WELCOME</a>
+            <a href="#sec2" class="abt-chnl magnet" onclick="toggleWidth(this)">CHANNELS</a>
+            <a href="#sec3" class="magnet bot-btn" onclick="toggleWidth(this), bot_btn_clicked()">BOTS</a>
+            <a href="#sec4" class="magnet contact-btn" onclick="toggleWidth(this)">LET'S TALK</a>
+        </div>
+    </center>
+
+    <div class="container">
+        <tag src="{}" class="player"></tag>
+    </div>
+
+    <div class="outer">
+        <div class="inner">
+            <div class="main" id="main">
+                <div class="file-name">
+                    <h4>File name :</h4>
+                    <br>
+                    <p id="myDiv">{}</p>
+                </div>
+                <div class="downloadBtn">
+                    <button class="magnet" onclick="vlc_player()">
+                        <img src="https://i.postimg.cc/15TQ4y7B/vlc.png" alt="">watch in VLC PLAYER
+                    </button>
+                    <button class="magnet" onclick="mx_player()">
+                        <img src="https://i.postimg.cc/sx4Msv4T/mx.png" alt="">watch in MX PLAYER
+                    </button>
+                    <button class="magnet" onclick="playit_player()">
+                        <img src="https://i.postimg.cc/RVGWYJFF/playit.png" alt="">watch in PLAYit PLAYER
+                    </button>
+                    <button class="magnet" onclick="km_player()">
+                        <img src="https://i.postimg.cc/wT9tFQ9Z/km.png" alt="">watch in KM PLAYER
+                    </button>
+                    <button class="magnet" onclick="s_player()">
+                        <img src="https://i.postimg.cc/XYJr6NGg/s.png" alt="">watch in S PLAYER
+                    </button>
+                    <button class="magnet" onclick="hd_player()">
+                        <img src="https://i.postimg.cc/rFT43LNh/hd.png" alt="">watch in HD PLAYER(4K)
+                    </button>
+                    <button class="magnet" onclick="bisalDownload()">
+                        <img style="height: 35px;" src="https://i.postimg.cc/Zncc9YLq/Pngtree-download-icon-3581467.png"
+                            alt="">download video
+                    </button>
+                </div>
+            </div>
+
+            <div class="abt">
+                <div class="about">
+                    <div class="about-dets">
+                        <div class="abt-sec" id="sec1" style="padding: 160px 30px;">
+                            <h1 style="text-align: center;">WELCOME TO OUR <span>STREAMING WEBSITE</span></h1>
+                            <p style="text-align: center; line-height: 2; word-spacing: 2px; letter-spacing: 0.8px;">
+                                We're thrilled to have <span>you</span> here.
+                                Get ready for an amazing <span>experience</span> filled with <span>entertainment</span>,
+                                <span>fun</span>, and <span>surprises</span>.
+                                Grab your snacks, sit back, and <span>enjoy</span> the show!
+                            </p>
+                        </div>
+
+                        <div class="abt-sec" id="sec2">
+                            <h1>OUR ALL <span>CHANNELS</span> LIST</h1>
+                            <div class="links chnl-link">
+                                <a class="magnet" href="https://telegram.me/aniflixClou"><button>MAIN CHANNEL</button></a>
+                            </div>
+                        </div>
+
+                        <div class="abt-sec" id="sec3">
+                            <h1>OUR ALL <span>BOTS</span> LIST</h1>
+                            <div class="links bot-link">
+                                <a class="magnet" href="https://telegram.me/aniflixClou"><button>BOTS CHANNEL</button></a>
+                            </div>
+                        </div>
+
+                        <div class="abt-sec" id="sec4">
+                            <p style="text-align: center;">YOU CAN <span>TALK</span> WITH US FOR YOUR <span>SUPPORT</span> AND YOU CAN <span>REPORT</span> THROUGH INSTAGRAM</p>
+                            <div class="links contact">
+                                <a href="https://www.instagram.com/aniflixClou"><button>CONTACT US</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="mid">
+                <h1 class="mid-text">VISIT <a href="#sec3" onclick="bot_btn_clicked()"><span>OUR BOT</span></a> FOR MORE INFO</h1>
+            </div>
+
+            <div class="last-text">
+                <p class="text-center pb-20 pr-6 pl-6 absolute" style="font-weight: 500;">
+                    Welcome to our online streaming platform! Our website allows users to generate streamable links for various files using Telegram bot. Please note that we are not responsible for the content shared or streamed through our service. Users are encouraged to respect copyright laws and adhere to our community guidelines. Enjoy easy, hassle-free file streaming service.
+                </p>
+            </div>
+
+            <div class="copyright">
+                <h5 class="text-center">Copyright © 2023-24 <a href="https://telegram.me/aniflixClou"><span style="font-weight: 700;">ANIFLIX</span></a>. All Rights Reserved.</h5>
+                <div class="icons">
+                    <a href="https://www.instagram.com/gojo22k"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                    <a href="https://telegram.me/aniflixClou"><i class="fa-brands fa-telegram fa-lg"></i></a>
+                </div>
+                <h4 style="font-weight: 700;">This Page Is ReDesigned By <a href="https://www.instagram.com/gojo22k"><span>Brutal</span></a></h4>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.plyr.io/3.6.9/plyr.js"></script>
+    <script src="https://aeditx03.github.io/resources/StreamJs.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const controls = [
-                'play-large',
-                'rewind',
-                'play', 
-                'fast-forward', 
-                'progress', 
-                'current-time',
-                'duration',
-                'mute',
-                'volume',
-                'captions',
-                'settings',
-                'pip',
-                'airplay',
-                'download',
-                'fullscreen'
-            ];
-            const player = Plyr.setup('.player', { controls });
-        });
+            const player = Plyr.setup('.player', {
+                controls: [
+                    'play-large', 'rewind', 'play', 'fast-forward', 'progress', 'current-time', 'duration', 'mute',
+                    'volume', 'captions', 'settings', 'pip', 'airplay', 'download', 'fullscreen'
+                ]
+            });
 
-        const body = document.querySelector('body');
-        const footer = document.querySelector('footer');
-        const toogle = document.querySelector('.toogle');
-        toogle.onclick = () => {
-            body.classList.toggle('dark');
-            footer.classList.toggle('dark');
-        };
+            const body = document.querySelector('body');
+            const footer = document.querySelector('footer');
+            const toogle = document.querySelector('.toogle');
+            toogle.onclick = () => {
+                body.classList.toggle('dark')
+                footer.classList.toggle('dark')
+            }
+        });
     </script>
 </body>
+
 </html>
